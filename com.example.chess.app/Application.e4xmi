@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.application">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.window.main" label="Chess" width="1400" height="970">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.application">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.window.main" label="Chess" width="1400" height="1000">
     <children xsi:type="basic:PartSashContainer" xmi:id="_6wlLksgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.partsashcontainer.sample" containerData="" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_CuSNcMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.partstack.graveyard.white" containerData="2">
         <children xsi:type="basic:Part" xmi:id="_HXplQMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.part.graveyard.white" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.parts.WhiteGraveyardPart" label="White Graveyard"/>
@@ -12,7 +12,26 @@
         <children xsi:type="basic:Part" xmi:id="_HukQcMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.part.graveyard.black" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.parts.BlackGraveyardPart" label="Black Graveyard"/>
       </children>
     </children>
+    <mainMenu xmi:id="_G5J6kM52EeyGMIVjiar0JQ" elementId="com.example.chess.app.menu.mainmenu">
+      <children xsi:type="menu:Menu" xmi:id="_Mnk18M52EeyGMIVjiar0JQ" elementId="com.example.chess.app.menu.game" label="Game">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_ngxMUM5-EeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handledmenuitem.save" label="Save" command="_ggNCsM51EeyGMIVjiar0JQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_RG5YkM6EEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handledmenuitem.load" label="Load" command="_lEcC4M51EeyGMIVjiar0JQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_vy5CcM6dEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handledmenuitem.undo" label="Undo" command="_k6nRUM6dEeyMJ7i_EMjfxQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_SDMxIM52EeyGMIVjiar0JQ" elementId="com.example.chess.app.handledmenuitem.about" label="About" command="_m52FUM51EeyGMIVjiar0JQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_ZNc74M53EeyGMIVjiar0JQ" elementId="com.example.chess.app.handledmenuitem.exit" label="Exit" command="_WbgDkM51EeyGMIVjiar0JQ"/>
+      </children>
+    </mainMenu>
   </children>
+  <handlers xmi:id="_9axUkM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.handler.about" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.AboutHandler" command="_m52FUM51EeyGMIVjiar0JQ"/>
+  <handlers xmi:id="_7alJAM52EeyGMIVjiar0JQ" elementId="com.example.chess.app.handler.save" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.SaveHandler" command="_ggNCsM51EeyGMIVjiar0JQ"/>
+  <handlers xmi:id="_FlI4gM53EeyGMIVjiar0JQ" elementId="com.example.chess.app.handler.load" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.LoadHandler" command="_lEcC4M51EeyGMIVjiar0JQ"/>
+  <handlers xmi:id="_Jl278M53EeyGMIVjiar0JQ" elementId="com.example.chess.app.handler.exit" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.ExitHandler" command="_WbgDkM51EeyGMIVjiar0JQ"/>
+  <handlers xmi:id="_piZUwM6dEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handler.undo" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.UndoHandler" command="_k6nRUM6dEeyMJ7i_EMjfxQ"/>
+  <commands xmi:id="_WbgDkM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.exit" commandName="exitCommand"/>
+  <commands xmi:id="_ggNCsM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.save" commandName="saveCommand"/>
+  <commands xmi:id="_lEcC4M51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.load" commandName="loadCommand"/>
+  <commands xmi:id="_m52FUM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.about" commandName="aboutCommand"/>
+  <commands xmi:id="_k6nRUM6dEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.command.undo" commandName="undoCommand"/>
   <addons xmi:id="_6wlLcsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_6wlLc8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_6wlLdMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

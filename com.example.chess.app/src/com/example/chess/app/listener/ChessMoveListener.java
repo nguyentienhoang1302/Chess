@@ -20,6 +20,9 @@ public class ChessMoveListener implements MouseListener {
 	private static ChessPlayer whitePlayer, blackPlayer;
 	private static Side side;
 	private static Board board;
+	private static ChessMove move;
+	protected static ChessMove lastWhiteMove;
+	protected static ChessMove lastBlackMove;
 	
 	public ChessMoveListener(Label label)
 	{
@@ -59,19 +62,14 @@ public class ChessMoveListener implements MouseListener {
 			{
 				Square initialSquare = selectedPiece.getSquare();
 				Piece targetPiece = targetSquare.getPiece();
-				ChessMove move = new ChessMove(initialSquare, targetSquare, targetPiece);
+				move = new ChessMove(initialSquare, targetSquare, targetPiece);
 				whitePlayer.makeMove(move);
 				side = side.opposite();
+				lastWhiteMove = move;
 			}
 			doubleClicked = false;
 			resetLegalSquares();
 		}
-		/*else if(side == Side.BLACK)
-		{
-			ChessMove move = blackPlayer.decideMove();
-			blackPlayer.makeMove(move);
-			side = side.opposite();
-		}*/
 	}
 
 	@Override
@@ -79,9 +77,10 @@ public class ChessMoveListener implements MouseListener {
 		// TODO Auto-generated method stub
 		if(side == Side.BLACK)
 		{
-			ChessMove move = blackPlayer.decideMove();
+			move = blackPlayer.decideMove();
 			blackPlayer.makeMove(move);
 			side = side.opposite();
+			lastBlackMove = move;
 		}
 		PartRefresher.refresh();
 	}
@@ -95,5 +94,14 @@ public class ChessMoveListener implements MouseListener {
 				board.getSquare(r, c).setLegal(false);
 			}
 		}
+	}
+	public static ChessMove getLastWhiteMove()
+	{
+		return lastWhiteMove;
+	}
+	
+	public static ChessMove getLastBlackMove()
+	{
+		return lastBlackMove;
 	}
 }

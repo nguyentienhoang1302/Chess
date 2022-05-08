@@ -1,5 +1,6 @@
 package com.example.chess.app.parts;
 
+
 import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.ui.di.Focus;
@@ -14,8 +15,17 @@ import com.example.chess.app.listener.ChessMoveListener;
 import com.example.chess.app.room.ChessRoom;
 import com.example.chess.core.icon.IconHandler;
 import com.example.chess.core.model.Board;
+import com.example.chess.core.model.Side;
 import com.example.chess.core.model.Square;
+import com.example.chess.core.model.piece.Bishop;
+import com.example.chess.core.model.piece.BlackPawn;
+import com.example.chess.core.model.piece.King;
+import com.example.chess.core.model.piece.Knight;
 import com.example.chess.core.model.piece.Piece;
+import com.example.chess.core.model.piece.Queen;
+import com.example.chess.core.model.piece.Rook;
+import com.example.chess.core.model.piece.WhitePawn;
+
 
 public class ChessBoardPart {
 	private static final String[] COL_LETTERS = {"A", "B", "C", "D", "E", "F", "G", "H"};
@@ -101,5 +111,44 @@ public class ChessBoardPart {
 	public static ChessRoom getChessRoom()
 	{
 		return chessRoom;
+	}
+	
+	
+	public static void reset()
+	{
+		for(int r = Board.LENGTH - 1; r >= 0; r--)
+		{
+			for(int c = 0; c < Board.LENGTH; c++)
+			{
+				chessRoom.getBoard().getSquare(r, c).setPiece(null);
+			}
+		}
+		
+		for(int c = 0; c < Board.LENGTH; c++)
+		{
+			chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new WhitePawn(chessRoom.getBoard().getSquare(1, c), Side.WHITE));
+		}
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Rook(chessRoom.getBoard().getSquare(0, 0), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Rook(chessRoom.getBoard().getSquare(0, 7), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Knight(chessRoom.getBoard().getSquare(0, 1), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Knight(chessRoom.getBoard().getSquare(0, 6), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Bishop(chessRoom.getBoard().getSquare(0, 2), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Bishop(chessRoom.getBoard().getSquare(0, 5), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new King(chessRoom.getBoard().getSquare(0, 4), Side.WHITE));
+		chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Queen(chessRoom.getBoard().getSquare(0, 3), Side.WHITE));
+		
+		for(int c = 0; c < Board.LENGTH; c++)
+		{
+			chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new BlackPawn(chessRoom.getBoard().getSquare(6, c), Side.BLACK));
+		}
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Rook(chessRoom.getBoard().getSquare(7, 0), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Rook(chessRoom.getBoard().getSquare(7, 7), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Knight(chessRoom.getBoard().getSquare(7, 1), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Knight(chessRoom.getBoard().getSquare(7, 6), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Bishop(chessRoom.getBoard().getSquare(7, 2), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Bishop(chessRoom.getBoard().getSquare(7, 5), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new King(chessRoom.getBoard().getSquare(7, 4), Side.BLACK));
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Queen(chessRoom.getBoard().getSquare(7, 3), Side.BLACK));
+		
 	}
 }

@@ -39,4 +39,10 @@ public class Army {
 		deadPieces.remove(piece);
 		alivePieces.add(piece);
 	}
+	
+	public void clearArmy()
+	{
+		alivePieces.clear();
+		deadPieces.clear();
+	}
 }

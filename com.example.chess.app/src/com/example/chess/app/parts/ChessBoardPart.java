@@ -124,6 +124,9 @@ public class ChessBoardPart {
 			}
 		}
 		
+		chessRoom.getBoard().getArmy(Side.WHITE).clearArmy();
+		chessRoom.getBoard().getArmy(Side.BLACK).clearArmy();
+		
 		for(int c = 0; c < Board.LENGTH; c++)
 		{
 			chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new WhitePawn(chessRoom.getBoard().getSquare(1, c), Side.WHITE));
@@ -148,7 +151,6 @@ public class ChessBoardPart {
 		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Bishop(chessRoom.getBoard().getSquare(7, 2), Side.BLACK));
 		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Bishop(chessRoom.getBoard().getSquare(7, 5), Side.BLACK));
 		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new King(chessRoom.getBoard().getSquare(7, 4), Side.BLACK));
-		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Queen(chessRoom.getBoard().getSquare(7, 3), Side.BLACK));
-		
+		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Queen(chessRoom.getBoard().getSquare(7, 3), Side.BLACK));		
 	}
 }

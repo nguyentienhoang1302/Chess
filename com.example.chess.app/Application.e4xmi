@@ -14,6 +14,7 @@
     </children>
     <mainMenu xmi:id="_G5J6kM52EeyGMIVjiar0JQ" elementId="com.example.chess.app.menu.mainmenu">
       <children xsi:type="menu:Menu" xmi:id="_Mnk18M52EeyGMIVjiar0JQ" elementId="com.example.chess.app.menu.game" label="Game">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jRPxcM86EeyzYfRHVQdfeA" elementId="com.example.chess.app.handledmenuitem.newgame" label="New Game" command="_ZhRFIM86EeyzYfRHVQdfeA"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_ngxMUM5-EeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handledmenuitem.save" label="Save" command="_ggNCsM51EeyGMIVjiar0JQ"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_RG5YkM6EEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handledmenuitem.load" label="Load" command="_lEcC4M51EeyGMIVjiar0JQ"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_vy5CcM6dEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handledmenuitem.undo" label="Undo" command="_k6nRUM6dEeyMJ7i_EMjfxQ"/>
@@ -27,11 +28,13 @@
   <handlers xmi:id="_FlI4gM53EeyGMIVjiar0JQ" elementId="com.example.chess.app.handler.load" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.LoadHandler" command="_lEcC4M51EeyGMIVjiar0JQ"/>
   <handlers xmi:id="_Jl278M53EeyGMIVjiar0JQ" elementId="com.example.chess.app.handler.exit" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.ExitHandler" command="_WbgDkM51EeyGMIVjiar0JQ"/>
   <handlers xmi:id="_piZUwM6dEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.handler.undo" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.UndoHandler" command="_k6nRUM6dEeyMJ7i_EMjfxQ"/>
+  <handlers xmi:id="_cvk0MM86EeyzYfRHVQdfeA" elementId="com.example.chess.app.handler.new" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.handler.NewGameHandler" command="_ZhRFIM86EeyzYfRHVQdfeA"/>
   <commands xmi:id="_WbgDkM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.exit" commandName="exitCommand"/>
   <commands xmi:id="_ggNCsM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.save" commandName="saveCommand"/>
   <commands xmi:id="_lEcC4M51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.load" commandName="loadCommand"/>
   <commands xmi:id="_m52FUM51EeyGMIVjiar0JQ" elementId="com.example.chess.app.command.about" commandName="aboutCommand"/>
   <commands xmi:id="_k6nRUM6dEeyMJ7i_EMjfxQ" elementId="com.example.chess.app.command.undo" commandName="undoCommand"/>
+  <commands xmi:id="_ZhRFIM86EeyzYfRHVQdfeA" elementId="com.example.chess.app.command.new" commandName="newCommand"/>
   <addons xmi:id="_6wlLcsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_6wlLc8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_6wlLdMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

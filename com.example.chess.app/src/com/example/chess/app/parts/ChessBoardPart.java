@@ -10,6 +10,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 
 import com.example.chess.app.listener.ChessMoveListener;
 import com.example.chess.app.room.ChessRoom;
@@ -106,6 +108,8 @@ public class ChessBoardPart {
 				}
 			}
 		}
+		
+		checkEndGame();
 	}
 	
 	public static ChessRoom getChessRoom()
@@ -153,4 +157,28 @@ public class ChessBoardPart {
 		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new King(chessRoom.getBoard().getSquare(7, 4), Side.BLACK));
 		chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Queen(chessRoom.getBoard().getSquare(7, 3), Side.BLACK));		
 	}
+	
+	public void checkEndGame()
+	{
+		if(chessRoom.getBoard().computeRating(Side.BLACK) >= 99)
+		{
+			MessageBox messageBox = new MessageBox(new Shell(), SWT.ICON_WARNING | SWT.OK);
+			messageBox.setText("End Game");
+			messageBox.setMessage("Black Win");
+			messageBox.open();
+			reset();
+		}
+		
+		if(chessRoom.getBoard().computeRating(Side.WHITE) >= 99)
+		{
+			MessageBox messageBox = new MessageBox(new Shell(), SWT.ICON_WARNING | SWT.OK);
+			messageBox.setText("End Game");
+			messageBox.setMessage("White Win");
+			messageBox.open();
+			reset();
+		}
+	}
 }
+
+
+

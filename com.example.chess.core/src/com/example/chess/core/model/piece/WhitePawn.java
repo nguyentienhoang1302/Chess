@@ -49,6 +49,8 @@ public class WhitePawn extends Piece {
 			legalMoves.add(targetSquare);
 		}
 		
+		
+		
 		return legalMoves;
 	}
 }

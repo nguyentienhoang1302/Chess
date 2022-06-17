@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.application">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.window.main" label="Chess" width="1400" height="1000">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.window.main" label="Chess" width="950" height="1000">
     <children xsi:type="basic:PartSashContainer" xmi:id="_6wlLksgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.partsashcontainer.sample" containerData="" horizontal="true">
-      <children xsi:type="basic:PartStack" xmi:id="_CuSNcMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.partstack.graveyard.white" containerData="2">
-        <children xsi:type="basic:Part" xmi:id="_HXplQMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.part.graveyard.white" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.parts.WhiteGraveyardPart" label="White Graveyard"/>
-      </children>
       <children xsi:type="basic:PartStack" xmi:id="_6wlLk8gZEeSyMNYR5xypkQ" elementId="com.example.chess.app.partstack.sample" containerData="8">
         <children xsi:type="basic:Part" xmi:id="_6wlLlMgZEeSyMNYR5xypkQ" elementId="com.example.chess.app.part.chessboard" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.parts.ChessBoardPart" label="Chess Board" iconURI=""/>
-      </children>
-      <children xsi:type="basic:PartStack" xmi:id="_CKSIgMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.partstack.graveyard.black" containerData="2">
-        <children xsi:type="basic:Part" xmi:id="_HukQcMUyEeyZ8rvPXxq9YA" elementId="com.example.chess.app.part.graveyard.black" contributionURI="bundleclass://com.example.chess.app/com.example.chess.app.parts.BlackGraveyardPart" label="Black Graveyard"/>
       </children>
     </children>
     <mainMenu xmi:id="_G5J6kM52EeyGMIVjiar0JQ" elementId="com.example.chess.app.menu.mainmenu">

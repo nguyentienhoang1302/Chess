@@ -108,10 +108,23 @@ public class ChessBoardPart {
 				}
 			}
 		}
-		
+		checkWhitePawnPromotion();
 		checkEndGame();
 	}
 	
+	private void checkWhitePawnPromotion() {
+		// TODO Auto-generated method stub
+		for(int c = 0; c < Board.LENGTH; c++)
+		{
+			if(chessRoom.getBoard().getSquare(7, c).getPiece() != null && chessRoom.getBoard().getSquare(7, c).getPiece().toString() == "P")
+			{
+				chessRoom.getBoard().getArmy(Side.WHITE).buryPiece(chessRoom.getBoard().getSquare(7, c).getPiece());
+				chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Queen(chessRoom.getBoard().getSquare(7, c), Side.WHITE));
+			}
+		}
+		
+	}
+
 	public static ChessRoom getChessRoom()
 	{
 		return chessRoom;

@@ -3,6 +3,8 @@ package com.example.chess.app.handler;
 import java.io.*;
 
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 
 import com.example.chess.app.parts.ChessBoardPart;
@@ -23,7 +25,12 @@ public class LoadHandler {
 		ChessRoom chessRoom = ChessBoardPart.getChessRoom();
 			
 		  try {
-			  BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Tien Hoang\\Documents\\GitHub\\Chess\\save\\save.txt"));
+			  FileDialog dialog = new FileDialog(shell, SWT.OPEN);
+			  dialog.setFilterExtensions(new String [] {"*.txt"});
+			  dialog.setFilterPath("C:\\Users\\Tien Hoang\\Documents\\GitHub\\Chess\\save");
+			  String result = dialog.open();
+			  BufferedReader br = new BufferedReader(new FileReader(result));
+			  //BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Tien Hoang\\Documents\\GitHub\\Chess\\save\\save.txt"));
 			  int c1;
 			  StringBuilder response= new StringBuilder();
 			  while ((c1 = br.read()) != -1) {

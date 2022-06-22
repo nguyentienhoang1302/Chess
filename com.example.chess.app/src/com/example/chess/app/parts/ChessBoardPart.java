@@ -5,9 +5,13 @@ import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Dialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -109,6 +113,7 @@ public class ChessBoardPart {
 			}
 		}
 		checkWhitePawnPromotion();
+		checkBlackPawnPromotion();
 		checkEndGame();
 	}
 	
@@ -118,11 +123,25 @@ public class ChessBoardPart {
 		{
 			if(chessRoom.getBoard().getSquare(7, c).getPiece() != null && chessRoom.getBoard().getSquare(7, c).getPiece().toString() == "P")
 			{
-				chessRoom.getBoard().getArmy(Side.WHITE).buryPiece(chessRoom.getBoard().getSquare(7, c).getPiece());
-				chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Queen(chessRoom.getBoard().getSquare(7, c), Side.WHITE));
+		        CustomDialog dialog = new CustomDialog(new Shell());
+		        dialog.setText("Title");
+		        dialog.setMessage("Message");
+	
+		        dialog.open(c);
 			}
-		}
-		
+		}	
+	}
+	
+	private void checkBlackPawnPromotion() {
+		// TODO Auto-generated method stub
+		for(int c = 0; c < Board.LENGTH; c++)
+		{
+			if(chessRoom.getBoard().getSquare(0, c).getPiece() != null && chessRoom.getBoard().getSquare(0, c).getPiece().toString() == "p")
+			{
+				chessRoom.getBoard().getArmy(Side.BLACK).buryPiece(chessRoom.getBoard().getSquare(0, c).getPiece());
+				chessRoom.getBoard().getArmy(Side.BLACK).addPiece(new Queen(chessRoom.getBoard().getSquare(0, c), Side.BLACK));
+			}
+		}	
 	}
 
 	public static ChessRoom getChessRoom()
@@ -190,6 +209,135 @@ public class ChessBoardPart {
 			messageBox.open();
 			reset();
 		}
+	}
+	public class CustomDialog extends Dialog
+	{
+	    private String message = "Promotion";
+	    private Shell shell;
+
+	    public CustomDialog(Shell parent)
+	    {
+	        // Pass the default styles here
+	        this(parent, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
+	        shell = parent;
+	    }
+
+	    public CustomDialog(Shell parent, int style)
+	    {
+	        // Let users override the default styles
+	        super(parent, style);
+	        shell = parent;
+	    }
+
+	    public String getMessage()
+	    {
+	        return message;
+	    }
+
+	    public void setMessage(String message)
+	    {
+	        this.message = message;
+	    }
+
+	    public void open(int c)
+	    {
+	        shell.setText(getText());
+	        createContents(shell, c);
+	        shell.pack();
+	        shell.open();
+	        Display display = getParent().getDisplay();
+	        while (!shell.isDisposed())
+	        {
+	            if (!display.readAndDispatch())
+	            {
+	                display.sleep();
+	            }
+	        }
+	    }
+
+	    /**
+	     * Creates the dialog's contents
+	     * 
+	     * @param shell
+	     *            the dialog window
+	     */
+	    private void createContents(final Shell shell, int c)
+	    {
+	        shell.setLayout(new GridLayout(4, true));
+
+	        // Show the message
+	        Label label = new Label(shell, SWT.NONE);
+	        label.setText("Promotion");
+	        GridData data = new GridData();
+	        data.horizontalSpan = 4;
+	        label.setLayoutData(data);
+
+	        // Display the input box
+	        Label image = new Label(shell, SWT.NONE);
+	        image.setImage(shell.getDisplay().getSystemImage(SWT.ICON_QUESTION));
+	        data = new GridData(SWT.FILL, SWT.BEGINNING, true, false);
+	        data.horizontalSpan = 4;
+	        image.setLayoutData(data);
+
+	        Button queen = new Button(shell, SWT.PUSH);
+	        queen.setText("Queen");
+	        data = new GridData(SWT.FILL, SWT.END, true, true);
+	        queen.setLayoutData(data);
+	        queen.addSelectionListener(new SelectionAdapter()
+	        {
+	            public void widgetSelected(SelectionEvent event)
+	            {
+	        		chessRoom.getBoard().getArmy(Side.WHITE).buryPiece(chessRoom.getBoard().getSquare(7, c).getPiece());
+					chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Queen(chessRoom.getBoard().getSquare(7, c), Side.WHITE));
+					shell.close();
+	            }
+	        });
+
+	        Button knight = new Button(shell, SWT.PUSH);
+	        knight.setText("Knight");
+	        data = new GridData(SWT.FILL, SWT.END, true, true);
+	        knight.setLayoutData(data);
+	        knight.addSelectionListener(new SelectionAdapter()
+	        {
+	            public void widgetSelected(SelectionEvent event)
+	            {
+	        		chessRoom.getBoard().getArmy(Side.WHITE).buryPiece(chessRoom.getBoard().getSquare(7, c).getPiece());
+					chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Knight(chessRoom.getBoard().getSquare(7, c), Side.WHITE));
+					shell.close();
+	            }
+	        });
+
+	        Button rook = new Button(shell, SWT.PUSH);
+	        rook.setText("Rook");
+	        data = new GridData(SWT.FILL, SWT.END, true, true);
+	        rook.setLayoutData(data);
+	        rook.addSelectionListener(new SelectionAdapter()
+	        {
+	            public void widgetSelected(SelectionEvent event)
+	            {
+	        		chessRoom.getBoard().getArmy(Side.WHITE).buryPiece(chessRoom.getBoard().getSquare(7, c).getPiece());
+					chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Rook(chessRoom.getBoard().getSquare(7, c), Side.WHITE));
+					shell.close();
+	            }
+	        });
+	        
+	        Button bishop = new Button(shell, SWT.PUSH);
+	        bishop.setText("Bishop");
+	        data = new GridData(SWT.FILL, SWT.END, true, true);
+	        bishop.setLayoutData(data);
+	        bishop.addSelectionListener(new SelectionAdapter()
+	        {
+	            public void widgetSelected(SelectionEvent event)
+	            {
+	        		chessRoom.getBoard().getArmy(Side.WHITE).buryPiece(chessRoom.getBoard().getSquare(7, c).getPiece());
+					chessRoom.getBoard().getArmy(Side.WHITE).addPiece(new Bishop(chessRoom.getBoard().getSquare(7, c), Side.WHITE));
+					shell.close();
+	            }
+	        });
+
+
+	        shell.setDefaultButton(queen);
+	    }
 	}
 }
 
